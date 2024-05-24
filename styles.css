@@ -1,0 +1,132 @@
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: #e0f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+h1 {
+    color: #00796b;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#country-input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #b0bec5;
+    border-radius: 5px 0 0 5px;
+    width: 70%;
+    outline: none;
+}
+
+#search-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background: #00796b;
+    color: #ffffff;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    outline: none;
+}
+
+#search-btn:hover {
+    background: #004d40;
+}
+
+.weather-card {
+    display: none;
+    text-align: left;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #b0bec5;
+    border-radius: 10px;
+    background: #6f7f5b;
+}
+
+.weather-card img {
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+}
+
+.weather-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.toggle {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+label {
+    font-size: 1rem;
+    color: #00796b;
+}
+
+.toggle-switch {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    background: #ccc;
+    border-radius: 15px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.toggle-switch::before {
+    content: '';
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 50%;
+    height: 90%;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.toggle-switch.celsius::before {
+    transform: translateX(0);
+    background: #4caf50;
+}
+
+.toggle-switch.fahrenheit::before {
+    transform: translateX(100%);
+    background: #ff5722;
+}
+
+.toggle-switch.celsius {
+    background: #4caf50;
+    box-shadow: 0 0 10px #4caf50;
+}
+
+.toggle-switch.fahrenheit {
+    background: #ff5722;
+    box-shadow: 0 0 10px #ff5722;
+}
