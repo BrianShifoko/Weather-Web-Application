@@ -8,14 +8,10 @@ document.getElementById('country-input').addEventListener('keypress', (event) =>
 const toggleSwitch = document.getElementById('unit-toggle');
 let unit = 'metric';
 
-toggleSwitch.addEventListener('click', () => {
-    if (toggleSwitch.classList.contains('celsius')) {
-        toggleSwitch.classList.remove('celsius');
-        toggleSwitch.classList.add('fahrenheit');
+toggleSwitch.addEventListener('change', () => {
+    if (toggleSwitch.checked) {
         unit = 'imperial';
     } else {
-        toggleSwitch.classList.remove('fahrenheit');
-        toggleSwitch.classList.add('celsius');
         unit = 'metric';
     }
     fetchWeather();

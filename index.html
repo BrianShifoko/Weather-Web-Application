@@ -12,16 +12,19 @@
     <div class="container">
         <h1>Weather App</h1>
         <div class="search">
-            <input type="text" id="country-input" placeholder="Enter country">
+            <input type="text" id="country-input" placeholder="Enter country, City or Town">
             <button id="search-btn">Search</button>
         </div>
         <div class="weather-card" id="weather-card">
             
         </div>
-        <div class="toggle">
-            <label for="unit-toggle">°C / °F</label>
-            <input type="checkbox" id="unit-toggle">
+        <p>Turn on Toggle to use Fahrenheit</p>
+        <div class="toggle-switch">
+            <input type="checkbox" id="unit-toggle" class="toggle-checkbox">
+            <label for="unit-toggle" class="toggle-label"></label>
+            
         </div>
+        
     </div>
     <script src="script.js"></script>
 </body>

@@ -2,6 +2,8 @@
 
 The Weather App is a modern, user-friendly application that allows users to get current and next-day weather forecasts for any city or town. It provides detailed weather information, including temperature, weather conditions, wind speed, and offers advice based on the forecast. Users can switch between Celsius and Fahrenheit units with a stylish toggle button.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/522b891f-3fb0-4822-8c20-ad113ac83fd2/deploy-status)](https://app.netlify.com/sites/brian-shifoko-weather-web-app/deploys)
+
 # Weather App
 
 ![Weather App Screenshot](images/Weather%20App%20Screenshot.png)
@@ -34,7 +36,7 @@ The Weather App is a modern, user-friendly application that allows users to get 
 
 1. Enter the name of a country, city or town in the input field.
 2. Press the search button or hit the "Enter" key to fetch the weather data.
-3. Toggle between Celsius and Fahrenheit using the checkmark button.
+3. Toggle between Celsius and Fahrenheit using the toggle button.
 4. Read the weather information and advice provided for the current and next day.
 
 
