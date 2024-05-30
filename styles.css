@@ -169,6 +169,10 @@ h1 {
         font-size: 0.9rem;
         padding: 8px;
     }
+    .weather-card {
+        margin: 10px;
+        padding: 10px;
+    }
 
     button {
         padding: 8px 16px;

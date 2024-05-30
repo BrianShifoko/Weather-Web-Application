@@ -53,78 +53,71 @@ function displayWeather(weatherData, forecastData, unit) {
     const windSpeed = (unit === 'metric') ? (weatherData.wind.speed * 3.6).toFixed(2) : weatherData.wind.speed;
     const icon = weatherData.weather[0].icon;
 
-   
-    const nextDayForecast = forecastData.list.find(item => {
-        const forecastDate = new Date(item.dt_txt);
-        const tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        return forecastDate.getDate() === tomorrow.getDate();
-    });
-
+    const nextDayForecast = getNextDayForecast(forecastData);
     const nextDayTemp = nextDayForecast.main.temp;
     const nextDayDescription = nextDayForecast.weather[0].description;
     const nextDayIcon = nextDayForecast.weather[0].icon;
 
-    
     document.body.style.backgroundImage = getBackgroundImage(weatherData.weather[0].main);
 
-    const currentDate = new Date().toLocaleDateString();
-
     weatherCard.innerHTML = `
+        ${createWeatherInfoSection(weatherData.name, icon, temp, tempUnit, weatherDescription, windSpeed, windSpeedUnit)}
+        <h3>Next Day Forecast</h3>
+        ${createWeatherInfoSection(null, nextDayIcon, nextDayTemp, tempUnit, nextDayDescription, nextDayForecast.wind.speed, windSpeedUnit)}
+        <p>${generateAdviceMessage(nextDayDescription, nextDayTemp, nextDayForecast.wind.speed)}</p>
+    `;
+}
+
+function getNextDayForecast(forecastData) {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    return forecastData.list.find(item => new Date(item.dt_txt).getDate() === tomorrow.getDate());
+}
+
+function createWeatherInfoSection(city, icon, temp, tempUnit, description, windSpeed, windSpeedUnit) {
+    return `
         <div class="weather-info">
-            <h2>${weatherData.name}</h2>
+            ${city ? `<h2>${city}</h2>` : ''}
             <img src="http://openweathermap.org/img/wn/${icon}.png" alt="Weather icon">
         </div>
-        <p>Date: ${currentDate}</p>
         <p>Temperature: ${temp} ${tempUnit}</p>
-        <p>Weather: ${weatherDescription}</p>
+        <p>Weather: ${description}</p>
         <p>Wind Speed: ${windSpeed} ${windSpeedUnit}</p>
-        <h3>Next Day Forecast</h3>
-        <div class="weather-info">
-            <p>Temperature: ${nextDayTemp} ${tempUnit}</p>
-            <p>Weather: ${nextDayDescription}</p>
-            <img src="http://openweathermap.org/img/wn/${nextDayIcon}.png" alt="Next day weather icon">
-        </div>
     `;
+}
 
+function generateAdviceMessage(description, temp, windSpeed) {
     let adviceMessage = '';
 
-    if (nextDayDescription.includes('rain')) {
+    if (description.includes('rain')) {
         adviceMessage = "Don't forget to carry an umbrella tomorrow!";
-    } else if (nextDayDescription.includes('sunny')) {
+    } else if (description.includes('sunny')) {
         adviceMessage = "It's going to be sunny tomorrow!";
-    } else if (nextDayDescription.includes('thunderstorm')) {
+    } else if (description.includes('thunderstorm')) {
         adviceMessage = "Caution: Thunderstorms expected tomorrow. Stay indoors if possible!";
-    } else if (nextDayDescription.includes('snow')) {
+    } else if (description.includes('snow')) {
         adviceMessage = "Snowfall expected tomorrow. Wear warm clothes and be careful on the roads!";
-    } else if (nextDayDescription.includes('cloudy')) {
+    } else if (description.includes('cloudy')) {
         adviceMessage = "It's going to be cloudy tomorrow.";
     }
 
-    if (nextDayForecast.wind.speed > 10) {
+    if (windSpeed > 10) {
         adviceMessage += " Strong winds expected. Wear heavier clothes and be cautious if you need to go outside.";
     } else {
         adviceMessage += " Light winds expected.";
     }
 
-    if (nextDayTemp > 30) { 
+    if (temp > 30) {
         adviceMessage += " Expect high temperatures. Stay hydrated and wear light clothing.";
-    } else if (nextDayTemp < 10) { 
+    } else if (temp < 10) {
         adviceMessage += " It's going to be cold. Wear warm clothing.";
     } else {
-        if (nextDayDescription.includes('rain') || nextDayDescription.includes('snow')) {
-            adviceMessage += " Ensure you are prepared for wet conditions.";
-        } else if (nextDayDescription.includes('sunny')) {
-            adviceMessage += " Light clothes should be fine.";
-        } else if (nextDayDescription.includes('cloudy')) {
-            adviceMessage += " Consider wearing layers.";
-        } else {
-            adviceMessage += " Enjoy the pleasant weather. Dress comfortably and have a great day!";
-        }
+        adviceMessage += " Enjoy the pleasant weather. Dress comfortably and have a great day!";
     }
 
-    weatherCard.innerHTML += `<p>${adviceMessage}</p>`;
+    return adviceMessage;
 }
+
 
 function getBackgroundImage(weatherMain) {
     switch (weatherMain) {
