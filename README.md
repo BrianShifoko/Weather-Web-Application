@@ -6,7 +6,7 @@ The Weather App is a modern, user-friendly application that allows users to get 
 
 # Weather App
 
-![Weather App Screenshot](images/Weather%20Application%20Screenshot.png)
+![Weather App Screenshot](images/Weather%20App%20Updated%20(1)%20Screenshot.png)
 
 
 ## Features
