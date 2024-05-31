@@ -1,25 +1,40 @@
+:root {
+    --primary-color: #00796b;
+    --secondary-color: #004d40;
+    --background-color: #e0f7fa;
+    --container-background: #ffffff;
+    --text-color: #000000;
+    --border-color: #b0bec5;
+    --toggle-background: #ccc;
+    --toggle-checked-background: #4caf50;
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --spacing: 10px;
+    --radius: 15px;
+}
+
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    background: #e0f7fa;
+    background: var(--background-color);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+    color: var(--text-color);
 }
 
 .container {
     text-align: center;
-    background: #ffffff;
+    background: var(--container-background);
     padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
     width: 100%;
     max-width: 400px;
 }
 
 h1 {
-    color: #00796b;
+    color: var(--primary-color);
     font-size: 2rem;
     margin-bottom: 20px;
 }
@@ -33,7 +48,7 @@ h1 {
 #country-input {
     padding: 10px;
     font-size: 1rem;
-    border: 1px solid #b0bec5;
+    border: 1px solid var(--border-color);
     border-radius: 5px 0 0 5px;
     width: 70%;
     outline: none;
@@ -42,7 +57,7 @@ h1 {
 #search-btn {
     padding: 10px 20px;
     font-size: 1rem;
-    background: #00796b;
+    background: var(--primary-color);
     color: #ffffff;
     border: none;
     border-radius: 0 5px 5px 0;
@@ -51,7 +66,7 @@ h1 {
 }
 
 #search-btn:hover {
-    background: #004d40;
+    background: var(--secondary-color);
 }
 
 .weather-card {
@@ -59,9 +74,10 @@ h1 {
     text-align: left;
     margin-top: 20px;
     padding: 20px;
-    border: 1px solid #b0bec5;
+    border: 1px solid var(--border-color);
     border-radius: 10px;
-    background: #6f7f5b;
+    background: var(--container-background);
+    box-shadow: var(--shadow);
 }
 
 .weather-card img {
@@ -92,7 +108,7 @@ h1 {
 .toggle-label {
     position: absolute;
     cursor: pointer;
-    background-color: #ccc;
+    background-color: var(--toggle-background);
     border-radius: 30px;
     width: 100%;
     height: 100%;
@@ -112,17 +128,17 @@ h1 {
 }
 
 .toggle-checkbox:checked + .toggle-label {
-    background-color: #4caf50;
+    background-color: var(--toggle-checked-background);
 }
 
 .toggle-checkbox:checked + .toggle-label::before {
     transform: translateX(30px);
 }
 
-/* For tablets and smaller screens siz adjustments */
+/* For tablets and smaller screens size adjustments */
 @media (max-width: 1024px) {
     .container {
-        padding: 10px;
+        padding: var(--spacing);
     }
 
     h1 {
@@ -141,7 +157,7 @@ h1 {
     }
 
     .toggle-switch {
-        margin: 10px 0;
+        margin: var(--spacing) 0;
     }
 
     button {
@@ -150,8 +166,8 @@ h1 {
     }
 
     .weather-card {
-        margin: 10px;
-        padding: 10px;
+        margin: var(--spacing);
+        padding: var(--spacing);
     }
 
     .toggle-label {
@@ -159,7 +175,7 @@ h1 {
     }
 }
 
-/* For for mobile phones screen sizes*/
+/* For mobile phone screen sizes */
 @media (max-width: 768px) {
     h1 {
         font-size: 1.5rem;

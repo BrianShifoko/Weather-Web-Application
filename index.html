@@ -7,21 +7,25 @@
     <link rel="icon" href="images/cloudy.png">
     <link rel="stylesheet" href="styles.css">
     <meta name="author" content="Brian Shifoko">
+    <meta name="description" content="A simple weather app to fetch current weather and forecast.">
 </head>
 <body>
-    <div class="container">
-        <h1>Weather App</h1>
-        <div class="search">
-            <input type="text" id="country-input" placeholder="Enter country, City or Town">
-            <button id="search-btn">Search</button>
-        </div>
-        <div class="weather-card" id="weather-card"></div>
+    <main class="container">
+        <header>
+            <h1>Weather App</h1>
+        </header>
+        <section class="search">
+            <label for="country-input" class="visually-hidden">Enter country, City or Town</label>
+            <input type="text" id="country-input" placeholder="Enter country, City or Town" aria-label="Country, City or Town">
+            <button id="search-btn" aria-label="Search for weather">Search</button>
+        </section>
+        <section class="weather-card" id="weather-card" aria-live="polite"></section>
         <p>Turn on Toggle to use Fahrenheit</p>
         <div class="toggle-switch">
-            <input type="checkbox" id="unit-toggle" class="toggle-checkbox">
+            <input type="checkbox" id="unit-toggle" class="toggle-checkbox" aria-label="Toggle between Celsius and Fahrenheit">
             <label for="unit-toggle" class="toggle-label"></label>
         </div>
-    </div>
-    <script src="script.js"></script>
+    </main>
+    <script src="script.js" defer></script>
 </body>
 </html>
