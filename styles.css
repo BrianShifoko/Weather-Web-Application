@@ -176,26 +176,28 @@ h1 {
 }
 
 /* For mobile phone screen sizes */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
     h1 {
-        font-size: 1.5rem;
+        font-size: 1.2rem; 
     }
 
-    input[type="text"] {
-        font-size: 0.9rem;
-        padding: 8px;
+    input[type="text"], button {
+        width: 100%; 
+        max-width: 300px; 
     }
+
+    .toggle-switch {
+        margin: var(--spacing) auto; 
+    }
+
     .weather-card {
-        margin: 10px;
-        padding: 10px;
-    }
-
-    button {
-        padding: 8px 16px;
-        font-size: 0.9rem;
+        margin: var(--spacing) 0; 
+        padding: var(--spacing); 
     }
 
     .toggle-label {
-        font-size: 0.8rem;
+        margin-left: 5px; 
+        font-size: 0.8rem; 
     }
 }
+
